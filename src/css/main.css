@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&display=swap');
+
+/* Slide inicial da página */
+#sobre-sorveteria .slide img{
+  width: 100%;
+  background-color: var(--color-primary-yellow);
+}
+
+/* SECTION SOBRE A SORVETERIA */
+.section-title{
+  font-family: "Mukta", sans-serif;
+}
+
+.text-colored{
+  color: var(--color-primary-red);
+}
+
+/* SECTION CARDÁPIO */
+.nav-cardapio{
+  font-size: 14pt;
+}
+.nav-cardapio .nav-link.active{
+  background-color: var(--color-primary-red);
+  color: var(--color-primary-yellow);
+}
+
+.nav-cardapio .nav-link:hover{
+  color: var(--color-primary-red);
+}
+
+#cardapio img {
+  height: 300px;
+}
+
+#cardapio .preco,
+h5 {
+  font-size: 16pt;
+}
+
+
+/* SLIDES DE FOTOS */
+@media screen and (max-width: 768px){
+  #sobre-sorveteria{
+    text-align: center;
+  }
+
+  #cardapio img {
+    height: 60vh;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px){
+  #sobre-sorveteria img{
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  #cardapio img {
+    height: 30vh;
+  }
+}

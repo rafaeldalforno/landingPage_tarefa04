@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Mogra&display=swap');
+@import url('./header.css');
+@import url('./main.css');
+
+/* VARIÁVEIS DE CORES */
+:root{
+  --color-primary-red: #ff1717;
+  --color-primary-yellow: #fde6a6;
+  --color-body-background: #fcf0cf;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: "Mogra", sans-serif;
+  background-color: var(--color-body-background);
+}
