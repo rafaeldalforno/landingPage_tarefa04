@@ -27,7 +27,10 @@ function requisitar(url){
 
 
 
-// let tela = window.screen;
-// if(tela.availWidth < 991){
-  
-// }
+// 1- CONFIGURAR O MODAL c/ 
+// https://www.youtube.com/watch?v=FXm7Dfre60I&t=0s
+
+
+// 2- ADICIONAR O PRODUTO NO LOCALSTORAGE c/
+// https://www.youtube.com/watch?v=SWTJxnms_YA&t=302s
+// https://www.youtube.com/watch?v=_HEIqE_qqbQ&t=256s
