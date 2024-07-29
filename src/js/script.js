@@ -1,3 +1,4 @@
+// Requisição Ajax para apresentar os produtos do cardápio
 function requisitar(url){
   document.getElementById('tab-content').innerHTML = '';
 
@@ -24,6 +25,39 @@ function requisitar(url){
 
   ajax.send();
 }
+
+//Abrindo o Modal com informações do carrinho
+function abrirModal(){
+  new bootstrap.Modal('#modal-window').show();
+}
+
+//Evento de Clique para adicionar algum produto ao carrinho
+produtos.addEventListener('click', function(event){
+  let parentButton = event.target.closest('.add-to-cart-btn');
+
+  if(parentButton){
+    const name = parentButton.getAttribute('data-name');
+    const price = parseFloat(parentButton.getAttribute('data-price'));
+    
+    // Adicionar no carrinho e LOCALSTORAGE
+
+    //FAZER A CHAMADA DA FUNÇÂO SALVAR NO LOCALSTORAGE
+    console.log(name);
+    console.log(price.toFixed(2));
+  }
+
+})
+
+// Configurando o MODAL do CARRINHO
+const produtos = document.getElementById('tab-content');
+const cartBtn = document.getElementById('cart-btn');
+const modalWindow = document.getElementById('modal-window');
+const cartItems = document.getElementById('cart-item');
+const cartTotal = document.getElementById('cart-total');
+const checkoutBtn = document.getElementById('checkout-btn');
+const cartCounter = document.getElementById('cart-count');
+
+
 
 
 

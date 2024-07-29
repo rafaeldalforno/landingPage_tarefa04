@@ -144,11 +144,37 @@
         <!-- FAZER UM FORMULÀRIO DE CONTATO -->
       </section>
 
-      <section id="cadastro">
-        <!-- FAZER O FORM DE CADASTRO DE PRODUTOS E SALVAR NO LOCALSTORAGE-->
+      <!-- BOTÃO CARRINHO DE COMPRAS -->
+      <section id="cart"">
+        <button id="cart-btn" type="button" class="botao-carrinho" data-bs-toggle="modal" data-bs-target="#modal-window">
+          <i class="bi bi-cart-plus"></i><br>
+          <span id="cart-count">0</span><br>
+          Item(s)
+        </button>
+        
+        <!-- MODAL -->
+        <div class="modal fade" id="modal-window" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Meu Carrinho</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div id="cart-item" class="d-flex justify-content-between mb-2 flex-column">
+                </div>
+                <p class="fw-bold">Total: <span id="cart-total">0.00</span></p>
+              </div>
+              <div class="modal-footer d-flex  justify-content-between">
+                <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Fechar</button>
+                <button id="checkout-btn" class="btn btn-success" type="button">Finalizar Pedido</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      </section>
+
     </main>
   </div>
 
