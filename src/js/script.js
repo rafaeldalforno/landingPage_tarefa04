@@ -26,6 +26,17 @@ function requisitar(url){
   ajax.send();
 }
 
+
+// ACESSANDO O DOM E SALVANDO EM VARIÁVEIS
+const produtos = document.getElementById('tab-content');
+const cartBtn = document.getElementById('cart-btn');
+const modalWindow = document.getElementById('modal-window');
+const cartItems = document.getElementById('cart-item');
+const cartTotal = document.getElementById('cart-total');
+const checkoutBtn = document.getElementById('checkout-btn');
+const cartCounter = document.getElementById('cart-count');
+
+
 //Abrindo o Modal com informações do carrinho
 function abrirModal(){
   new bootstrap.Modal('#modal-window').show();
@@ -45,20 +56,7 @@ produtos.addEventListener('click', function(event){
     console.log(name);
     console.log(price.toFixed(2));
   }
-
 })
-
-// Configurando o MODAL do CARRINHO
-const produtos = document.getElementById('tab-content');
-const cartBtn = document.getElementById('cart-btn');
-const modalWindow = document.getElementById('modal-window');
-const cartItems = document.getElementById('cart-item');
-const cartTotal = document.getElementById('cart-total');
-const checkoutBtn = document.getElementById('checkout-btn');
-const cartCounter = document.getElementById('cart-count');
-
-
-
 
 
 // 1- CONFIGURAR O MODAL c/ 
