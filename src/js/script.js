@@ -50,13 +50,51 @@ produtos.addEventListener('click', function(event){
     const name = parentButton.getAttribute('data-name');
     const price = parseFloat(parentButton.getAttribute('data-price'));
     
-    // Adicionar no carrinho e LOCALSTORAGE
+    // Adicionar no LOCALSTORAGE
+    const produto = {
+      item: name,
+      preco: price.toFixed(2)
+    }
 
-    //FAZER A CHAMADA DA FUNÇÂO SALVAR NO LOCALSTORAGE
-    console.log(name);
-    console.log(price.toFixed(2));
+    createProduto(produto);
+    cartCounter.innerHTML = readProduto().length;
   }
 })
+
+// UPDATE NO LOCALSTORAGE PARA CRIAR O ITEM NO CARRINHO
+// const updateCarrinho = () => {
+//   let lista_produtos = readProduto();
+//   lista_produtos.forEach(createItem)
+// }
+
+// FUNÇÕES DE ACESSO AO LOCALSTORAGE (CRUD)
+const getLocalStorage = () => JSON.parse(localStorage.getItem('db_carrinho')) ?? [];
+
+const setLocalStorage = (lista_produtos) => localStorage.setItem("db_carrinho", JSON.stringify(lista_produtos));
+
+// Função CREATE do CRUD
+const createProduto = (produto) => {
+  let lista_produtos = getLocalStorage();
+  lista_produtos.push(produto);
+  setLocalStorage(lista_produtos);
+}
+
+// Função READ do CRUD
+const readProduto = () => getLocalStorage();
+
+// Função UPDATE do CRUD
+const updateProduto = (index, produto) => {
+  let lista_produtos = readProduto();
+  lista_produtos[index] = produto;
+  setLocalStorage(lista_produtos);
+}
+
+// Função DELETE do CRUD
+const deleteProduto = (index) => {
+  let lista_produtos = readProduto();
+  lista_produtos.splice(index, 1);
+  setLocalStorage(lista_produtos);
+}
 
 
 // 1- CONFIGURAR O MODAL c/ 
