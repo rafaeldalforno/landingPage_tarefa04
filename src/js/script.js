@@ -35,13 +35,16 @@ const cartItems = document.getElementById('cart-item');
 const cartTotal = document.getElementById('cart-total');
 const checkoutBtn = document.getElementById('checkout-btn');
 const cartCounter = document.getElementById('cart-count');
+const editButton = document.getElementById('delete');
 
 
 //Abrindo o Modal com informações do carrinho
 function abrirModal(){
   new bootstrap.Modal('#modal-window').show();
 }
+cartBtn.addEventListener('click', () => updateCarrinho());
 
+// EVENTOS DE CLICK 
 //Evento de Clique para adicionar algum produto ao carrinho
 produtos.addEventListener('click', function(event){
   let parentButton = event.target.closest('.add-to-cart-btn');
@@ -62,10 +65,63 @@ produtos.addEventListener('click', function(event){
 })
 
 // UPDATE NO LOCALSTORAGE PARA CRIAR O ITEM NO CARRINHO
-// const updateCarrinho = () => {
-//   let lista_produtos = readProduto();
-//   lista_produtos.forEach(createItem)
-// }
+const createItem = (produto) => {
+  const newItem = document.createElement('div');
+  newItem.innerHTML = `
+    <div id="cart-item" class="d-flex justify-content-between mb-2 align-items-center">
+      <div class="item">
+        <h3>${produto.item}</h3>
+        <p>Preço: R$ ${produto.preco}</p>
+        <p>Obs:</p>
+      </div>
+      <div class="item-button">
+        <button id="edit" onclick="editItem()">
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button id="delete" onclick="deleteItem()">
+          <i class="bi bi-trash3"></i>
+        </button>
+      </div>
+    </div>
+  `
+  document.querySelector('.modal-body').appendChild(newItem);
+}
+
+const clearCarrinho = () => {
+  const items = document.querySelectorAll('.modal-body>div');
+  items.forEach(item => item.parentNode.removeChild(item));
+}
+
+const updateCarrinho = () => {
+  let lista_produtos = readProduto();
+  clearCarrinho();
+  lista_produtos.forEach(createItem);
+
+  let somaPrecoTotal = 0.00;
+  for(produto of lista_produtos){
+    somaPrecoTotal += parseFloat(produto.preco);
+  }
+  const newTotal = document.createElement('div');
+  newTotal.innerHTML = `
+    <p class="fw-bold fs-5 text-end">Total: R$<span id="cart-total">${somaPrecoTotal.toFixed(2)}</span></p>
+  `
+  document.querySelector('.modal-body').appendChild(newTotal);
+}
+
+
+
+//EVENTO DE CLICK EDIT / DELETE
+// document.querySelector('.modal-body>div').addEventListener('click', editDelete);
+
+const editItem = () => {
+    console.log("CLICOU NO EDIT");
+}
+
+const deleteItem = () =>{
+  console.log("CLICOU NO DELETE");
+}
+
+
 
 // FUNÇÕES DE ACESSO AO LOCALSTORAGE (CRUD)
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_carrinho')) ?? [];

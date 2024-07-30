@@ -68,7 +68,7 @@ h5 {
   padding: 10px;
 }
 
-#cart .modal .modal-body .item-button #delete-button{
+#cart .modal .modal-body .item-button #delete{
   background-color: var(--color-primary-red);
 }
 
