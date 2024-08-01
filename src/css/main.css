@@ -19,7 +19,8 @@
 .nav-cardapio{
   font-size: 14pt;
 }
-.nav-cardapio .nav-link.active{
+.nav-cardapio .nav-link.active,
+#contato button{
   background-color: var(--color-primary-red);
   color: var(--color-primary-yellow);
 }
@@ -35,6 +36,15 @@
 #cardapio .preco,
 h5 {
   font-size: 16pt;
+}
+
+.social-links li {
+  list-style: none;
+  display: inline;
+}
+
+.social-links a {
+  text-decoration: none;
 }
 
 

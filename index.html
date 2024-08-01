@@ -140,9 +140,74 @@
         </div>
       </section>
       
-      <section id="contato">
-        <!-- FAZER UM FORMULÀRIO DE CONTATO -->
-      </section>
+      <section id="contato" class="pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <h2 class="section-title text-center fw-bold">Fale 
+                    <span class="text-colored">Conosco</span>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-7 mb-5">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label fw-bold text-colored">Seu Nome:</label>
+                            <input id="nome" class="form-control" type="text" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold text-colored">Seu E-mail:</label>
+                            <input id="email" class="form-control" type="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label fw-bold text-colored">Seu Telefone (opcional):</label>
+                            <input id="telefone" class="form-control" type="tel">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label fw-bold text-colored">Seu Mensagem:</label>
+                            <textarea id="mensagem" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn fw-bold">Enviar</button>
+                    </form>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <h3 class="section-title fs-4 text-colored">
+                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                            Redes Sociais
+                        </h3>
+                        <ul class="social-links">
+                            <li class="fs-2">
+                                <a href="#">
+                                    <i class="bi bi-facebook text-colored"></i>
+                                </a>
+                            </li>
+                            <li class="fs-2 ms-2 me-2">
+                                <a href="#">
+                                    <i class="bi bi-instagram text-colored"></i>
+                                </a>
+                            </li>
+                            <li class="fs-2">
+                                <a href="#">
+                                    <i class="bi bi-whatsapp text-colored"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row mt-4">
+                        <h3 class="section-title fs-4 text-colored">
+                            <i class="bi bi-cursor-fill"></i>
+                            Endereço:
+                        </h3>
+                        <p>
+                            Rua: Doutor Noronha nº 603, Bairro: Perpétuo Socorro - Cruz Alta - RS
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
       <!-- BOTÃO CARRINHO DE COMPRAS -->
       <section id="cart"">
@@ -162,38 +227,9 @@
               </div>
               <div class="modal-body">
                 <div id="cart-items">
-                  <!-- <div id="cart-item" class="d-flex justify-content-between mb-2 align-items-center">
-                    <div class="item">
-                      <h3>Banana Split</h3>
-                      <p>Preço: R$ 22,00</p>
-                      <p>Obs:</p>
-                    </div>
-                    <div class="item-button">
-                      <button id="edit-button">
-                        <i class="bi bi-pencil"></i>
-                      </button>
-                      <button id="delete-button">
-                        <i class="bi bi-trash3"></i>
-                      </button>
-                    </div>
-                  </div> -->
-                  <!-- <div id="cart-item" class="d-flex justify-content-between mb-2 align-items-center">
-                    <div class="item">
-                      <h3>Banana Split</h3>
-                      <p>Preço: R$ 22,00</p>
-                      <p>Obs:</p>
-                    </div>
-                    <div class="item-button">
-                      <button id="edit-button">
-                        <i class="bi bi-pencil"></i>
-                      </button>
-                      <button id="delete-button">
-                        <i class="bi bi-trash3"></i>
-                      </button>
-                    </div>
-                  </div> -->
+                  <!-- onde os itens serão renderizados  -->
                 </div>
-                <!-- <p class="fw-bold fs-5 text-end">Total: <span id="cart-total">0.00</span></p> -->
+                
               </div>
               <div class="modal-footer d-flex  justify-content-between">
                 <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Fechar</button>
@@ -203,11 +239,14 @@
           </div>
         </div>
       </section>
-
-
-    </main>
+    </main>  
   </div>
 
+  <footer id="rodape" class="pt-2 pb-1">
+    <p class="text-center">
+        Desenvolvido por: Rafael Dal Forno dos Santos - 2024
+    </p>
+  </footer>
 
 
 
