@@ -19,7 +19,8 @@
 .nav-cardapio{
   font-size: 14pt;
 }
-.nav-cardapio .nav-link.active{
+.nav-cardapio .nav-link.active,
+#contato button{
   background-color: var(--color-primary-red);
   color: var(--color-primary-yellow);
 }
@@ -35,6 +36,15 @@
 #cardapio .preco,
 h5 {
   font-size: 16pt;
+}
+
+.social-links li {
+  list-style: none;
+  display: inline;
+}
+
+.social-links a {
+  text-decoration: none;
 }
 
 
@@ -56,20 +66,23 @@ h5 {
   margin-bottom: 50px;
 }
 
-#cart .modal .modal-body #cart-item{
+#cart .modal .modal-body .cart-item{
   border: 1px solid var(--color-primary-red);
   padding: 5px;
 }
 
-#cart .modal .modal-body .item-button button{
+#cart .modal .modal-body .item-buttons button{
   border-radius: 5px;
   border: none;
-  width: 50px;
-  padding: 10px;
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  /* padding: 10px; */
 }
 
-#cart .modal .modal-body .item-button #delete-button{
+#cart .modal .modal-body .item-buttons .delete{
   background-color: var(--color-primary-red);
+  font-size: 18pt;
 }
 
 
@@ -87,6 +100,12 @@ h5 {
     height: 100px;
     width: 100px;
     font-size: 12pt;
+  }
+
+  #cart .modal .modal-body .item-buttons button{
+    width: 40px;
+    height: 40px;
+    font-size: 8pt;
   }
 }
 

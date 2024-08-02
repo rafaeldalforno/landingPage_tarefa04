@@ -31,17 +31,22 @@ function requisitar(url){
 const produtos = document.getElementById('tab-content');
 const cartBtn = document.getElementById('cart-btn');
 const modalWindow = document.getElementById('modal-window');
-const cartItems = document.getElementById('cart-item');
+const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 const checkoutBtn = document.getElementById('checkout-btn');
 const cartCounter = document.getElementById('cart-count');
-
 
 //Abrindo o Modal com informações do carrinho
 function abrirModal(){
   new bootstrap.Modal('#modal-window').show();
 }
 
+// Espera por um evento no botão para abrir o Modal do carrinho
+cartBtn.addEventListener('click', () => {
+  updateCarrinho();
+})
+
+// EVENTOS DE CLICK 
 //Evento de Clique para adicionar algum produto ao carrinho
 produtos.addEventListener('click', function(event){
   let parentButton = event.target.closest('.add-to-cart-btn');
@@ -53,7 +58,8 @@ produtos.addEventListener('click', function(event){
     // Adicionar no LOCALSTORAGE
     const produto = {
       item: name,
-      preco: price.toFixed(2)
+      preco: price.toFixed(2),
+      obs: ''
     }
 
     createProduto(produto);
@@ -62,10 +68,81 @@ produtos.addEventListener('click', function(event){
 })
 
 // UPDATE NO LOCALSTORAGE PARA CRIAR O ITEM NO CARRINHO
-// const updateCarrinho = () => {
-//   let lista_produtos = readProduto();
-//   lista_produtos.forEach(createItem)
-// }
+const createItem = (produto, index) => {
+  const newItem = document.createElement('div');
+  newItem.innerHTML = `
+    <div class="cart-item d-flex justify-content-between mb-2 align-items-center">
+      <div class="item">
+        <h3>${produto.item}</h3>
+        <p>Preço: R$ ${produto.preco}</p>
+        <p>Obs:</p>
+        <input class="mb-2 input-obs" type="text" id="obs-${index}" placeholder="Adicione sua Observação">
+      </div>
+      <div class="item-buttons d-flex">
+        <button id="edit-${index}" type="button" class="edit-item-btn" data-name="${produto.item}">
+          Add OBS
+        </button>
+        <button id="delete-${index}" type="button" class="delete delete-item-btn" data-name="${produto.item}">
+          X
+        </button>
+      </div>
+    </div>
+  `
+  document.querySelector('#cart-items').appendChild(newItem);
+}
+
+const clearCarrinho = () => {
+  const items = document.querySelectorAll('#cart-items>div');
+  items.forEach(item => item.parentNode.removeChild(item));
+}
+
+const updateCarrinho = () => {
+  let lista_produtos = readProduto();
+  clearCarrinho();
+  lista_produtos.forEach(createItem);
+
+  let somaPrecoTotal = 0.00;
+  for(produto of lista_produtos){
+    somaPrecoTotal += parseFloat(produto.preco);
+  }
+  const newTotal = document.createElement('div');
+  newTotal.innerHTML = `
+    <p class="fw-bold fs-5 text-end">Total: R$<span id="cart-total">${somaPrecoTotal.toFixed(2)}</span></p>
+  `
+  document.querySelector('#cart-items').appendChild(newTotal);
+  cartCounter.innerHTML = readProduto().length;
+}
+
+
+// Espera um click nos botões "EDIT" e "DELETE" de um item específico
+cartItemsContainer.addEventListener('click', function(event){
+  if(event.target.type == 'button'){
+    const [ action, index ] = event.target.id.split('-');
+    
+    if(action == 'edit'){
+      editItem(index);
+    } else{
+      // chamada de função DELETE do CRUD passando o index do item
+      deleteProduto(index);
+      updateCarrinho();
+    }
+  }
+})
+
+const editItem = (index) => {
+  //DISABLED = FALSE ou TRUE para habilitar a edição
+  let produtoIndex = readProduto()[index];
+  produtoIndex.obs = document.getElementById('obs-'+ index).value;
+  updateProduto(index, produtoIndex);
+  document.getElementById('obs-'+index).value = '';
+
+  // ADICIONAR NO CARRINHO A OBS
+  
+  console.log(`EDITANDO O ITEM ${produtoIndex.item}`);
+  console.log(produtoIndex);
+}
+
+
 
 // FUNÇÕES DE ACESSO AO LOCALSTORAGE (CRUD)
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_carrinho')) ?? [];
