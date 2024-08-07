@@ -9,7 +9,10 @@ Eu melhorei uma landing page que desenvolvi para a atividade 3 do curso, na ativ
 * AJAX
 * CRUD no localStorage
 
-Meu plano para melhorar a página com novas funcionalidades, vou desenvolver uma comunicação com API do whatsapp para enviar o pedido final ao chat da loja. Procurando trabalhar com consumo de APIs
+Implementei a funcionalidade de quando o usuário clicar no botão de finalizar pedido, uma função pegará os itens adicionados no carrinho, que estão salvos no localStorage. Enviará estes itens como pedido, no formato de mensagem para o whatsapp da empresa, neste caso no contato da Sorveteria.
+
+Para futuras melhorias, ainda planejo melhorar a visualização dos itens no modal de carrinho, assim como fazer a OBS que o cliente adicionou no item, aparecer como texto no campo de OBS do modal.
+
 
 
 O link de acesso ao deploy da Landing Page é: 
