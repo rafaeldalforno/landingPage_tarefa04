@@ -142,6 +142,20 @@ const editItem = (index) => {
   console.log(produtoIndex);
 }
 
+// Função que irá pegar os produtos salvos no carrinho (localStorage) e enviará através de uma string como mensagem para o whatsapp da Sorveteria
+const finalizarPedido = () => {
+  let lista_produtos = readProduto();
+  const pedido = lista_produtos.map((item) => {
+    return (
+      `Produto: ${item.item} - Preço: R$ ${item.preco} - OBS: ${item.obs} |`
+    )
+  }).join("")
+  
+  const message = encodeURIComponent(pedido); // mensagem com os itens do pedido
+  const phone = "48991020114";  //contato da sorveteria que receberá o pedido
+
+  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+}
 
 
 // FUNÇÕES DE ACESSO AO LOCALSTORAGE (CRUD)
